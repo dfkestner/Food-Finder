@@ -84,24 +84,22 @@ $(document).ready(function() {
         })       
     }            
 
-    $("#searchButton").on("click", function(event) {
+    userTextForm = $("#search-restaurants");
+    userTextForm.on("submit", function(event) {
         event.preventDefault();
-
-        var zip = $("#searchZip").val().trim();
-
+        var zip = $("#restaurant-input-field").val().trim();
         zipSearch(zip);
-
-        $("#searchZip").val("");
+        $("#restaurant-input-field").val("");
+        $(".searchOptions").val("");
+        $(".restaurantList").val("");
     })
 
-
-})
-userTextForm = $('#search-box');
-userTextForm.on("submit", function() {
-    var currentSearchTerm = $("#input-field").val();
-    searchForRecipes(currentSearchTerm);
-    event.preventDefault();
-});
+    userTextForm = $('#search-recipes');
+    userTextForm.on("submit", function() {
+        var currentSearchTerm = $("#recipe-input-field").val();
+        searchForRecipes(currentSearchTerm);
+        event.preventDefault();
+    });
 
 
 //==========================TO DO=====================================================//
@@ -113,36 +111,37 @@ userTextForm.on("submit", function() {
 // ingredients list?? Potentially in some kinda dropdown?
 
 //==========================TO DO=====================================================//
-function searchForRecipes(searchTerm) {
-var queryURL = "https://forkify-api.herokuapp.com/api/search?q=" + searchTerm;
-  $.ajax({
-      url: queryURL,
-      method: "GET"
-  })
-      .then(function(response) {
-        console.log(response);
-        for (let i = 0; i < 5; i++) {
-            currentRecipeID = response.recipes[i].recipe_id;
-            getDetailedRecipeInfo(currentRecipeID);
-            
-            var recipeImage = `<img src="`+ response.recipes[i].image_url +`" class="recipe-picture">`
-            $("#recipe-results").append(
-             response.recipes[i].title +
-             `<div class="image-container">`+recipeImage+`</div>`
-            +'<br><br>'
-            );
-        }
-      });
-}
+    function searchForRecipes(searchTerm) {
+    var queryURL = "https://forkify-api.herokuapp.com/api/search?q=" + searchTerm;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+        .then(function(response) {
+            console.log(response);
+            for (let i = 0; i < 5; i++) {
+                currentRecipeID = response.recipes[i].recipe_id;
+                getDetailedRecipeInfo(currentRecipeID);
+                
+                var recipeImage = `<img src="`+ response.recipes[i].image_url +`" class="recipe-picture">`
+                $("#recipe-results").append(
+                response.recipes[i].title +
+                `<div class="image-container">`+recipeImage+`</div>`
+                +'<br><br>'
+                );
+            }
+        });
+    }
 
-function getDetailedRecipeInfo(recipeID){
-    var queryURL = "https://forkify-api.herokuapp.com/api/get?rId=" + recipeID;
-  $.ajax({
-      url: queryURL,
-      method: "GET"
-  })
-      .then(function(response) {
-        console.log(response);
+    function getDetailedRecipeInfo(recipeID){
+        var queryURL = "https://forkify-api.herokuapp.com/api/get?rId=" + recipeID;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+        .then(function(response) {
+            console.log(response);
 
-      });
-}
+        });
+    }
+})
