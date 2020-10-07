@@ -10,6 +10,11 @@ img {
     max-height: 150px;
 }
 
+h1, form, {
+
+  float: center;
+ }
+
 .switch {
     position: relative;
     display: inline-block;
