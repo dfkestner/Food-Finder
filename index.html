@@ -4,17 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Document</title>
 </head>
 <body>
     <form id="search-box">
-<input type="text" id="input-field">
+<input type="text" list="languages" id="input-field">
 </form>
 
+<datalist id="languages">
+    <option value="HTML">
+    <option value="CSS">
+    <option value="JavaScript">
+    <option value="Java">
+    <option value="Ruby">
+    <option value="PHP">
+    <option value="Go">
+    <option value="Erlang">
+    <option value="Python">
+    <option value="C">
+    <option value="C#">
+    <option value="C++">
+  </datalist>
 <div><br></div>
 <div id="recipe-results"></div>
 
-<script src="script.js"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
