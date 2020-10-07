@@ -99,6 +99,9 @@ $(document).ready(function() {
         var currentSearchTerm = $("#recipe-input-field").val();
         searchForRecipes(currentSearchTerm);
         event.preventDefault();
+        $("#recipe-input-field").val("");
+        $(".searchOptions").val("");
+        $(".restaurantList").val("")
     });
 
 
