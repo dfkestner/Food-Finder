@@ -16,7 +16,7 @@ $(document).ready(function() {
                 console.log(response.cuisines);
 
                 for (i = 0; i < response.cuisines.length; i++) {
-                    var cuisBtn = $("<button>").text(response.cuisines[i].cuisine.cuisine_name).addClass("cuisineBtn").attr("data-index", response.cuisines[i].cuisine.cuisine_id); 
+                    var cuisBtn = $("<button>").text(response.cuisines[i].cuisine.cuisine_name).addClass("cuisineBtn").attr("data-index", response.cuisines[i].cuisine.cuisine_id);
                     $(".searchOptions").append(cuisBtn);
                 }
 
@@ -25,35 +25,36 @@ $(document).ready(function() {
                     console.log(cuisID);
                     console.log($(this).data("index"));
 
+                    $(cuisBtn).after("");
+
                     cuisineList(cuisID, lat, long)
                 })
-            }
-        })
-    }
 
-    function cuisineList(cuisineID, lat, long) {
-        var apiKey = "b719894d13610808dbf09abce78bb1ea";
-        var queryURL = "https://developers.zomato.com/api/v2.1/search?lat=" + lat + "&lon=" + long + "&cuisines=" + cuisineID
-
-        $.ajax({
-            dataType: "json",
-            url: queryURL,
-            method: "GET",
-            headers: {
-            'user-key': apiKey,
-            },
-            success: function (response) {
-                console.log(response);
-                console.log(lat, long, cuisineID);
-
-                for (i = 0; i < response.restaurants.length; i++) {
-                    var rName = $("<p>").text(response.restaurants[i].restaurant.name);
-                    var hours = $("<p>").text(response.restaurants[i].restaurant.timings);
-                    var phone = $("<p>").text(response.restaurants[i].restaurant.phone);
-                    var website = $("<p>").text(response.restaurants[i].restaurant.url);
-                    var location = $("<p>").text(response.restaurants[i].restaurant.location.address);
-
-                    $(".restaurantList").append(rName, hours, phone, website, location);
+                function cuisineList(cuisineID, lat, long) {
+                    var apiKey = "b719894d13610808dbf09abce78bb1ea";
+                    var queryURL = "https://developers.zomato.com/api/v2.1/search?lat=" + lat + "&lon=" + long + "&cuisines=" + cuisineID
+            
+                    $.ajax({
+                        dataType: "json",
+                        url: queryURL,
+                        method: "GET",
+                        headers: {
+                        'user-key': apiKey,
+                        },
+                        success: function (response) {
+                            console.log(response);
+                            console.log(lat, long, cuisineID);
+            
+                            for (i = 0; i < response.restaurants.length; i++) {
+                                var rName = $("<p>").text(response.restaurants[i].restaurant.name);
+                                var hours = $("<p>").text(response.restaurants[i].restaurant.timings);
+                                var phone = $("<p>").text(response.restaurants[i].restaurant.phone);
+                                var website = $("<p>").text(response.restaurants[i].restaurant.url);
+                                var location = $("<p>").text(response.restaurants[i].restaurant.location.address);
+                                $(cuisBtn).after(rName, hours, phone, website, location);
+                            }
+                        }
+                    })
                 }
             }
         })
@@ -89,11 +90,12 @@ $(document).ready(function() {
     }
     
     function newSearch() {
-        $("#search-restaurants").text("Search for a dish or pick a cuisine:")
+        var prompt = $("<p>").text("Search for a dish or pick a cuisine:")
+        $(".searchOptions").prepend(prompt)
         userTextForm.on("submit", function(event) {
             event.preventDefault();
-            $(".searchOptions").empty
-            $(".restaurantList").empty()
+            // $(".searchOptions").empty
+            // $(".restaurantList").empty()
             var query = $("#restaurant-input-field").val().trim();
             searchQuery(query)
             $("#restaurant-input-field").val("");
@@ -127,8 +129,8 @@ $(document).ready(function() {
         var zip = $("#restaurant-input-field").val().trim();
         zipSearch(zip);
         $("#restaurant-input-field").val("");
-        $(".searchOptions").empty();
-        $(".restaurantList").empty();
+        // $(".searchOptions").empty();
+        // $(".restaurantList").empty();
     })
 
     userTextForm = $('#search-recipes');
@@ -137,8 +139,8 @@ $(document).ready(function() {
         searchForRecipes(currentSearchTerm);
         event.preventDefault();
         $("#recipe-input-field").val("");
-        $(".searchOptions").empty();
-        $(".restaurantList").empty();
+        // $(".searchOptions").empty();
+        // $(".restaurantList").empty();
     });
 
 
