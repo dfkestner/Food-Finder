@@ -8,12 +8,21 @@
     <title>Tim and Eric and Tea's Awesome Food Finder, Great Job!</title>
 </head>
 <body>
-    <input type="text" id="searchZip">
-    <button type="submit" id="searchButton">Search</button>
+    <form id="search-recipes">
+    <input type="text" id="recipe-input-field">
+    </form>
+    
+    <form id="search-restaurants">
+    <input type="text" id="restaurant-input-field">
+    </form> 
+
     <ul class="searchOptions"></ul>
     <ul class="restaurantList"></ul>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+
+<div><br></div>
+<div id="recipe-results"></div>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
