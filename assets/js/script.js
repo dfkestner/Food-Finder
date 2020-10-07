@@ -94,81 +94,55 @@ $(document).ready(function() {
         $("#searchZip").val("");
     })
 
-    // var catButton = $("<button>").text("Search by Category").addClass("catSearch").attr("id", "catSearch");
-    // $(".catList").append("<p id='category'>");
-    // $("#category").append(catButton);
 
-    // catButton.on("click", function(event){
-    //     event.preventDefault();
-
-    //     var apiKey = "b719894d13610808dbf09abce78bb1ea";
-    //     var queryURL = "https://developers.zomato.com/api/v2.1/categories"
-
-    //     $.ajax({
-    //         dataType: "json",
-    //         url: queryURL,
-    //         method: "GET",
-    //         headers: {
-    //             'user-key': apiKey,
-    //         },
-    //         success: function (response) {
-    //             console.log(response);
-
-    //             var category = response.categories;
-
-    //             for (i = 0; i < category.length; i++) {
-    //                 var catButton2 = $("<button>").text(category[i].categories.name).addClass("categoryName").val(category[i].categories.id);
-    //                 $("#catSearch").append(catButton2);
-    //                 console.log(category[i].categories.name);
-    //                 console.log(category[i].categories.id);
-
-    //                 var catID = category[i].categories.id;
-    //             }
-
-    //             $(".categoryName").on("click", function(event) {
-    //                 event.preventDefault();
-
-    // //                 // var sortBy = $("<ul>").text("Sort by")
-    // //                 // (catButton2).append(sortBy);
-    // //                 // var cost = $("<button>").text("Cost").val(cost);
-    // //                 // var rating = $("<button>").text("Rating").val(rating);
-    // //                 // var distance = $("<button>").text("Distance").val(real_distance);
-    // //                 // add &sort= after type number
-
-    //                 var apiKey = "b719894d13610808dbf09abce78bb1ea";
-    //                 var queryURL = "https://developers.zomato.com/api/v2.1/search?establishment_type" + catID;
-
-    //                 $.ajax({
-    //                     dataType: "json",
-    //                     url: queryURL,
-    //                     method: "GET",
-    //                     headers: {
-    //                         'user-key': apiKey,
-    //                     },
-    //                     success: function (response) {
-    //                         console.log(response);
-                    
-    //                     }
-    //                 })
-    //             })
-    //         }
-    //     });
-    // })
-
-     // function collections(locID) {
-    //     var apiKey = "b719894d13610808dbf09abce78bb1ea";
-    //     var queryURL = "https://developers.zomato.com/api/v2.1/collections?city_id=" + locID
-
-    //     $.ajax({
-    //         dataType: "json",
-    //         url: queryURL,
-    //         method: "GET",
-    //         headers: {
-    //         'user-key': apiKey,
-    //         },
-    //         success: function (response) {
-    //             console.log(response);
-    //         }
-    //     })
-    // }
 })
+userTextForm = $('#search-box');
+userTextForm.on("submit", function() {
+    var currentSearchTerm = $("#input-field").val();
+    searchForRecipes(currentSearchTerm);
+    event.preventDefault();
+});
+
+
+//==========================TO DO=====================================================//
+
+// Add autocomplete search functionality
+// Display publisher info and 
+// Clear the div or prepend instead of append?
+// Add multiple pages?
+// ingredients list?? Potentially in some kinda dropdown?
+
+//==========================TO DO=====================================================//
+function searchForRecipes(searchTerm) {
+var queryURL = "https://forkify-api.herokuapp.com/api/search?q=" + searchTerm;
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+  })
+      .then(function(response) {
+        console.log(response);
+        for (let i = 0; i < 5; i++) {
+            currentRecipeID = response.recipes[i].recipe_id;
+            getDetailedRecipeInfo(currentRecipeID);
+            
+            var recipeImage = `<img src="`+ response.recipes[i].image_url +`" class="recipe-picture">`
+            $("#recipe-results").append(
+             response.recipes[i].title +
+             `<div class="image-container">`+recipeImage+`</div>`
+            +'<br><br>'
+            );
+        }
+      });
+}
+
+function getDetailedRecipeInfo(recipeID){
+    var queryURL = "https://forkify-api.herokuapp.com/api/get?rId=" + recipeID;
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+  })
+      .then(function(response) {
+        console.log(response);
+
+      });
+}
