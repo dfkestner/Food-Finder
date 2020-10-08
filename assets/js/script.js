@@ -1,9 +1,9 @@
-$(document).ready(function() {
-
+$(document).ready(function() {   
     $("#restaurant-input-button").on("click", function(event) {
         event.preventDefault();
         $(".cuisineBtn").remove();
         $(".restList").empty();
+        $(".recipe-results").empty();
         var zip = $("#restaurant-input-field").val().trim();
         console.log(zip);
         zipSearch(zip);
@@ -48,6 +48,7 @@ $(document).ready(function() {
                     event.preventDefault();
                     $(".cuisineBtn").remove();
                     $(".restList").empty();
+                    $(".recipe-results").empty();
                     var query = $("#searchParty").val().trim();
                     window.localStorage.setItem("recentSearch", JSON.stringify(query));
                     $("#searchParty").val("");
@@ -151,15 +152,15 @@ $(document).ready(function() {
             }
         })
     } 
-//==========================TO DO=====================================================//
-
-// Add autocomplete search functionality
-// Display publisher info and 
-// Clear the div or prepend instead of append?
-// Add multiple pages?
-// ingredients list?? Potentially in some kinda dropdown?
-
-//==========================TO DO=====================================================//
+    $('#recipe-input-button').on("click", function(event) {
+        event.preventDefault();
+        $(".cuisineBtn").remove();
+        $(".restList").empty();
+        var currentSearchTerm = $("#recipe-input-field").val().trim();
+        searchForRecipes(currentSearchTerm);
+        $("#recipe-input-field").val("");
+    }) 
+    
     function searchForRecipes(searchTerm) {
     var queryURL = "https://forkify-api.herokuapp.com/api/search?q=" + searchTerm;
     $.ajax({
@@ -171,8 +172,7 @@ $(document).ready(function() {
             for (let i = 0; i < 5; i++) {
                 currentRecipeID = response.recipes[i].recipe_id;
                 getDetailedRecipeInfo(currentRecipeID);
-                
-                var recipeImage = `<img src="`+ response.recipes[i].image_url +`" class="recipe-picture">`
+                var recipeImage = `<a target="_blank" href=" `+ response.recipes[i].source_url +`"><img src="`+ response.recipes[i].image_url +`" class="recipe-picture"></a>`
                 $("#recipe-results").append(
                 response.recipes[i].title +
                 `<div class="image-container">`+recipeImage+`</div>`
@@ -181,7 +181,6 @@ $(document).ready(function() {
             }
         });
     }
-
     function getDetailedRecipeInfo(recipeID){
         var queryURL = "https://forkify-api.herokuapp.com/api/get?rId=" + recipeID;
     $.ajax({
@@ -190,7 +189,6 @@ $(document).ready(function() {
     })
         .then(function(response) {
             console.log(response);
-
         });
-    }
+    }    
 })
