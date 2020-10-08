@@ -12,6 +12,8 @@ h1 {
   padding: 10px;
   border-radius: 4px;
   text-align: center;
+.image-container {
+    max-height: 150px;
 }
 
 .form {
