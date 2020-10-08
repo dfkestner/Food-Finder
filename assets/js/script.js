@@ -3,7 +3,6 @@ $(document).ready(function() {
         event.preventDefault();
         $(".cuisineBtn").remove();
         $(".restList").empty();
-        $(".recipe-results").empty();
         var zip = $("#restaurant-input-field").val().trim();
         console.log(zip);
         zipSearch(zip);
@@ -48,7 +47,7 @@ $(document).ready(function() {
                     event.preventDefault();
                     $(".cuisineBtn").remove();
                     $(".restList").empty();
-                    $(".recipe-results").empty();
+                    $("#recipe-results").empty();
                     var query = $("#searchParty").val().trim();
                     window.localStorage.setItem("recentSearch", JSON.stringify(query));
                     $("#searchParty").val("");
@@ -111,6 +110,7 @@ $(document).ready(function() {
             
                             $(".cuisineBtn").on("click", function(event) {
                                 event.preventDefault();
+                                $("#recipe-results").empty();
                                 var cuisID = $(this).data("index");
                                 console.log($(this).data("index"));
                                 window.localStorage.setItem("cuisID", JSON.stringify(cuisID));
