@@ -8,20 +8,43 @@
     <title>Tim and Eric and Tea's Awesome Food Finder, Great Job!</title>
 </head>
 <body>
-    <h1>Tim and Eric and Tea's Awesome Food Finder, Great Job!</h1>
+    <div class="pure-menu pure-menu-horizontal">
+        <a href="#" class="pure-menu-heading pure-menu-link">BRAND</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+                <a href="#" class="pure-menu-link">News</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="#" class="pure-menu-link">Sports</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="#" class="pure-menu-link">Finance</a>
+            </li>
+        </ul>
+    </div>
 
-    <form id="search-box">
-<input type="text" id="input-field">
+    <h1 class="header">Tim and Eric and Tea's Awesome Food Finder, Great Job!</h1>
+    <div  class="search-recipes">
+    <form id="search-box" class="form">
+<input type="text" id="input-field" placeholder="search recipes">
 <button type="submit" id="searchButton">Search</button>
 </form>
+<p>Write..</p>
+<form id="search-recipes"  class="form">
+    <input type="text" id="recipe-input-field">
+    </form>
+    <p>Write..</p>
+    <form id="search-restaurants"  class="form">
+        <input type="text" id="restaurant-input-field">
+        </form>
+        <p>Write..</p>
 <ul class="searchOptions"></ul>
 <ul class="restaurantList"></ul>
+    
 
-<label class="switch">
-    <input type="checkbox">
-    <span class="slider round"></span>
-  </label>
-
+    <ul class="searchOptions button-xsmall pure-button"></ul>
+    <ul class="restaurantList"></ul>
+    </div>
 <div><br></div>
 <div id="recipe-results"></div>
 <script src="https://code.jquery.com/jquery.js"></script>
