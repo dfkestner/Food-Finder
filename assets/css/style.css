@@ -1,6 +1,3 @@
-*,
-
-
 h1 {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -8,10 +5,18 @@ h1 {
   text-align: center;
 }
 
+.pure-menu-item {
+  padding: 0;
+  margin: 0;
+  height: 10%;
+}
+
 .search-recipes {
   padding: 10px;
   border-radius: 4px;
   text-align: center;
+}
+
 .image-container {
     max-height: 150px;
 }
