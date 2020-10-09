@@ -1,9 +1,86 @@
-*,
+h1, article {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  
+}
+
+h1{
+  text-shadow: 2px 2px #FF0000;
+}
+
+.pure-menu-item {
+  padding: 0;
+  margin: 0;
+  height: 5%;
+}
+
+#search-recipes, #search-restaurants {
+    margin: 0 0 20px 20px;
+}
+
+.search-recipes {
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* .btn {
+  background-color: blue;
+} */
+/* .recipe-results {
+  display: flex;
+  align-items: flex-end;
+} */
+
+.result {
+  display: block;
+  margin-left: 20px;
+  width: 250px
+}
 
 .image-container {
-    max-height: 150px;
+  max-height: 150px;
 }
 
 img {
-    max-height: 150px;
+  max-height: 150px;
+}
+
+/* 
+Media Query */
+@media screen and (min-width: 320px) {
+  .gif {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  #search-recipes, #search-restaurants, .searchOptions, .restaurantList {
+      text-align: center;
+  }
+
+  .recipe-results {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      justify-content: space-around;
+      align-items: center;
+  }
+
+  .searchCats {
+      margin: 0 0 20px 20px;
+      border-radius: 5px;
+  }
+
+  .cuisineBtn {
+      margin: 5px;
+      padding: 15px;
+      border-radius: 5px;
+  }
+
+  h4 {
+      font-size: 20px;
+      font-weight: 800;
+  }
 }

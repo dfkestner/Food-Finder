@@ -42,7 +42,6 @@ $(document).ready(function() {
                 $(btnSearch).after(catDecisions);
                 var catSearchBtn = $("<button>").text("Check it out! Browse by Cuisine!").attr("id","catBtnSearch").addClass("searchCats");
                 $(catDecisions).after(catSearchBtn);
-
                 $("#searchBtn").on("click", function(event) {
                     event.preventDefault();
                     $(".cuisineBtn").remove();
@@ -79,12 +78,10 @@ $(document).ready(function() {
                                 var website = $("<p>").text(response.restaurants[i].restaurant.url).addClass("restList");
                                 var location = $("<p>").text(response.restaurants[i].restaurant.location.address).addClass("restList");
                                 $(".restaurantList").append(rName, hours, phone, website, location);
-
                             }
                         }
                     })
                 })
-
                 $("#catBtnSearch").on("click", function(event) {
                     event.preventDefault();
                     var lat = JSON.parse(localStorage.getItem("latitude"))
@@ -115,13 +112,11 @@ $(document).ready(function() {
                                 console.log($(this).data("index"));
                                 window.localStorage.setItem("cuisID", JSON.stringify(cuisID));
                                 $(cuisBtn).after("");
-
                                 var latty = localStorage.getItem("latitude");
                                 var longy = localStorage.getItem("longitude");
                                 var cuisineID = localStorage.getItem("cuisID");
                                 var apiKey = "b719894d13610808dbf09abce78bb1ea";
                                 var queryURL = "https://developers.zomato.com/api/v2.1/search?lat=" + latty + "&lon=" + longy + "&cuisines=" + cuisineID
-
                                 $.ajax({
                                     dataType: "json",
                                     url: queryURL,
@@ -173,10 +168,11 @@ $(document).ready(function() {
                 currentRecipeID = response.recipes[i].recipe_id;
                 getDetailedRecipeInfo(currentRecipeID);
                 var recipeImage = `<a target="_blank" href=" `+ response.recipes[i].source_url +`"><img src="`+ response.recipes[i].image_url +`" class="recipe-picture"></a>`
-                $("#recipe-results").append(
-                response.recipes[i].title +
+                $(".recipe-results").append(
+                "<div class='result'>" + "<p>" +
+                response.recipes[i].title + "</p>" + "<br>" +
                 `<div class="image-container">`+recipeImage+`</div>`
-                +'<br><br>'
+                //+'<br><br>'
                 );
             }
         });

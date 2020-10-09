@@ -1,30 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Tim and Eric and Tea's Awesome Food Finder, Great Job!</title>
-</head>
-<body>
-    <div id="search-recipes">
-        <input type="text" id="recipe-input-field" placeholder="Search Recipes">
-        <button id="recipe-input-button">Search</button>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <title>Tim and Eric and Tea's Awesome Food Finder, Great Job!</title>
+    </head>
+    <body>
     
-    <div id="search-restaurants">
-        <input type="text" id="restaurant-input-field" placeholder="Enter Zip Code">
-        <button id="restaurant-input-button">Search</button>
+        <div class="pure-menu pure-menu-horizontal" >
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-selected">
+                    <a href="index.html" class="pure-menu-link">Home</a>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                    <a href="#" id="menuLink1" class="pure-menu-link">Culture</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item">
+                            <a href="https://www.adultswim.com/videos/check-it-out-with-dr-steve-brule" class="pure-menu-link">Steve Brule</a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a href="https://www.timanderic.com/" class="pure-menu-link">Tim & Eric & Tea</a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a href="https://en.wikiquote.org/wiki/Tim_and_Eric_Awesome_Show,_Great_Job!" class="pure-menu-link">Quotes</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+       
+        <div class="gif">
+            <div style="width:50%;height:50vh;position:relative;"><iframe src="https://giphy.com/embed/75ZaxapnyMp2w" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
 
-    <ul class="searchOptions"></ul>
-    <br><br>
-    <ul class="restaurantList"></ul>
+            <div style="width:50%;height:50vh;position:relative;"><iframe src="https://giphy.com/embed/cGaLaTKetImZO" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+        </div>
 
-<div><br></div>
-<div id="recipe-results"></div>
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="./assets/js/script.js"></script>
-</body>
-</html>
+
+        <h1 class="header">Tim and Eric and Tea's Awesome Food Finder, Great Job!</h1>
+        <article>If you're a real 5 star chef why dont you search for a recipe? If your milk tastes sour when you take a sip of it check the experation date, dummy! Or search for resturants by area code</article>
+        <div id="search-recipes">
+            <input type="text" id="recipe-input-field" placeholder="Search Recipes">
+            <button id="recipe-input-button">Search</button>
+        </div>
+        <div id="search-restaurants">
+            <input type="text" id="restaurant-input-field" placeholder="Enter Zip Code">
+            <button id="restaurant-input-button">Search</button>
+        </div>
+        <div><br></div>
+        <div class="searchOptions"></div>
+        <div><br></div>
+        <div class="restaurantList"></div>
+        <div><br></div>
+        <div id="recipe-results" class="recipe-results"></div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    </body>
+    </html>
+
+
+
