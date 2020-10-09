@@ -11,7 +11,7 @@ $(document).ready(function() {
     
     function zipSearch(zipCode) {
         var apiKey1 = "Fav9FCMlr3R1KBTsPH43nJ5vOVAhUTeH";
-        var queryURL = "http://open.mapquestapi.com/geocoding/v1/address?key=" + apiKey1 + "&location=" + zipCode;
+        var queryURL = "https://open.mapquestapi.com/geocoding/v1/address?key=" + apiKey1 + "&location=" + zipCode;
 
         $.ajax({
             dataType: "json",
