@@ -1,9 +1,8 @@
-# Food-Finder
-Tim and Eric and Tea's Awesome Food Finder, Great Job! Find restaurants and recipes, check it out!
+# Overview: 
+This is a Food-Finder that allows you to find recipes for your favorite foods ,as well as, find restaurants 
+and cuisines based on zip code. With a Tim & Eric theme.
 
-Overview: 
-
-This application uses zomato, forkify, and mapquest API's
+## Instructions
 When a food is entered into the search recipe textbox and click search; pictures and the name of the recipe will populate clicking the picture will send you to the website with said recipe
 When you enter a zip code another you are presented with two options:
 Option one enter a type of food into the "what sounds good" textbox
@@ -17,7 +16,7 @@ Lastly, the Culture menu in the navbar is filled with Tim and Eric goodness
 
 
 
-Technologies used: 
+## Technologies used: 
 Html
 Css
 Pure Css framework
@@ -27,10 +26,13 @@ JSON
 Zomato, Forkify, and Mapquest API's
 Git
 
+## Credits:
+
+Tea Flores-Kestner: https://github.com/dfkestner
+Eric Osowski: https://github.com/EricJamesOsowski
+Tim Bluhm: https://github.com/TJblue94
 
 
-
-
-
-Links:
+## Links:
 Github: https://github.com/dfkestner/Food-Finder
+Deployed: https://dfkestner.github.io/Food-Finder/
